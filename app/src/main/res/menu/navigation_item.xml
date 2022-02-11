@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@+id/group"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home"
+            android:title="Home" />
+
+        <item
+            android:id="@+id/nav_contactUs"
+            android:icon="@drawable/teacher"
+            android:title="Data Instruktur" />
+
+        <item
+            android:id="@+id/nav_aboutUs"
+            android:icon="@drawable/material"
+            android:title="Data Materi" />
+
+        <item
+            android:id="@+id/nav_pegawai"
+            android:icon="@drawable/webinar"
+            android:title="Data Peserta" />
+        <item
+            android:id="@+id/nav_kelas"
+            android:icon="@drawable/write"
+            android:title="Data Kelas" />
+
+        <item
+            android:id="@+id/nav_detail_kelas"
+            android:icon="@drawable/material"
+            android:title="Data Detail Kelas"
+            />
+
+    </group>
+</menu>
