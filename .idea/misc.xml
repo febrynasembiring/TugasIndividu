@@ -11,20 +11,26 @@
         <entry key="..\:/Users/USER/AndroidStudioProjects/ProjectIndividuFebryna/app/src/main/res/layout/activity_lihat_detail_instruktur.xml" value="0.1" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/ProjectIndividuFebryna/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/ProjectIndividuFebryna/app/src/main/res/layout/activity_tambah_data_instruktur.xml" value="0.1" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/ProjectIndividuFebryna/app/src/main/res/layout/fragment_data_detail_kelas.xml" value="0.2" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/ProjectIndividuFebryna/app/src/main/res/layout/fragment_data_detail_kelas.xml" value="0.1" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/ProjectIndividuFebryna/app/src/main/res/layout/fragment_data_detail_kelas_layout.xml" value="0.1" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/ProjectIndividuFebryna/app/src/main/res/layout/fragment_detail_data_kelas.xml" value="0.1" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/ProjectIndividuFebryna/app/src/main/res/layout/fragment_detail_kelas.xml" value="0.1" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/ProjectIndividuFebryna/app/src/main/res/layout/fragment_home.xml" value="0.264" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/ProjectIndividuFebryna/app/src/main/res/layout/fragment_instruktur_layout.xml" value="0.1875" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/ProjectIndividuFebryna/app/src/main/res/layout/fragment_instruktur_layout.xml" value="0.1" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/ProjectIndividuFebryna/app/src/main/res/layout/fragment_kelas_layout.xml" value="0.1" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/ProjectIndividuFebryna/app/src/main/res/layout/fragment_materi_layout.xml" value="0.1" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/ProjectIndividuFebryna/app/src/main/res/layout/fragment_peserta_layout.xml" value="0.2" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/ProjectIndividuFebryna/app/src/main/res/layout/list_instruktur_layout.xml" value="0.1875" />
-        <entry key="..\:/Users/USER/AndroidStudioProjects/ProjectIndividuFebryna/app/src/main/res/layout/list_kelas_layout.xml" value="0.2" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/ProjectIndividuFebryna/app/src/main/res/layout/fragment_search.xml" value="0.1" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/ProjectIndividuFebryna/app/src/main/res/layout/lihat_detail_dari_detail_kelas_layout.xml" value="0.1" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/ProjectIndividuFebryna/app/src/main/res/layout/list_data_kelas_detail_layout.xml" value="0.17587939698492464" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/ProjectIndividuFebryna/app/src/main/res/layout/list_detail_dari_detail_kelas_layout.xml" value="0.11770833333333333" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/ProjectIndividuFebryna/app/src/main/res/layout/list_instruktur_layout.xml" value="0.1" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/ProjectIndividuFebryna/app/src/main/res/layout/list_kelas_layout.xml" value="0.17587939698492464" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/ProjectIndividuFebryna/app/src/main/res/layout/list_materi_layout.xml" value="0.1" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/ProjectIndividuFebryna/app/src/main/res/layout/list_peserta_layout.xml" value="0.2" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/ProjectIndividuFebryna/app/src/main/res/layout/nav_header_layout.xml" value="0.10643115942028986" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/ProjectIndividuFebryna/app/src/main/res/layout/tambah_data_instruktur.xml" value="0.1" />
+        <entry key="..\:/Users/USER/AndroidStudioProjects/ProjectIndividuFebryna/app/src/main/res/layout/tambah_data_kelas_layout.xml" value="0.1" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/ProjectIndividuFebryna/app/src/main/res/layout/tambah_materi_layout.xml" value="0.1" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/ProjectIndividuFebryna/app/src/main/res/layout/tambah_peserta_layout.xml" value="0.1" />
         <entry key="..\:/Users/USER/AndroidStudioProjects/ProjectIndividuFebryna/app/src/main/res/menu/navigation_item.xml" value="0.176" />

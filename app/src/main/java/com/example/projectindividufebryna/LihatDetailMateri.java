@@ -1,5 +1,9 @@
 package com.example.projectindividufebryna;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,10 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -24,11 +24,17 @@ public class LihatDetailMateri extends AppCompatActivity {
     String id;
     Button button_update_materi;
     Button button_delete_materi;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_data_materi);
+
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         edit_id_mat = findViewById(R.id.edit_id_mat);
         edit_nama_mat = findViewById(R.id.edit_nama_mat);
@@ -52,7 +58,7 @@ public class LihatDetailMateri extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(LihatDetailMateri.this);
-                alertDialogBuilder.setMessage("Apakah anda yakin menghapus data ini ");
+                alertDialogBuilder.setMessage("Yakin Hapus Data ini?");
 
                 alertDialogBuilder.setPositiveButton("Ya",
                         new DialogInterface.OnClickListener() {
@@ -86,7 +92,7 @@ public class LihatDetailMateri extends AppCompatActivity {
             protected void onPreExecute() {
                 super.onPreExecute();
                 loading = ProgressDialog.show(LihatDetailMateri.this,
-                        "Menhgapus Data...", "Harap menunggu...",
+                        "Deleting Data...", "Harap menunggu...",
                         false, false);
             }
 
@@ -102,6 +108,9 @@ public class LihatDetailMateri extends AppCompatActivity {
                 super.onPostExecute(message);
                 loading.dismiss();
                 displayDetailData(message);
+                Intent intent = new Intent(LihatDetailMateri.this, MainActivity.class);
+                intent.putExtra("KeyName", "materi");
+                startActivity(intent);
             }
         }
         DeleteMateri dm = new DeleteMateri();
@@ -145,7 +154,7 @@ public class LihatDetailMateri extends AppCompatActivity {
         um.execute();
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(LihatDetailMateri.this);
-        alertDialogBuilder.setMessage("Update lagi?");
+        alertDialogBuilder.setMessage("Update Data ini?");
 
         alertDialogBuilder.setPositiveButton("Ya",
                 new DialogInterface.OnClickListener() {
@@ -158,7 +167,9 @@ public class LihatDetailMateri extends AppCompatActivity {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //startActivity(new Intent(LihatDetailInstruktur.this, InstrukturFragment.class));
+                        Intent intent = new Intent(LihatDetailMateri.this, MainActivity.class);
+                        intent.putExtra("KeyName", "materi");
+                        startActivity(intent);
                     }
                 });
 
@@ -199,7 +210,7 @@ public class LihatDetailMateri extends AppCompatActivity {
     private void displayDetailData(String json) {
         try {
             JSONObject jsonObject = new JSONObject(json);
-            JSONArray result = jsonObject.getJSONArray(konfigurasi.TAG_JSON_ARRAY_MAT);
+            JSONArray result = jsonObject.getJSONArray(konfigurasi.TAG_JSON_ARRAY);
             JSONObject object = result.getJSONObject(0);
 
             String mat_id = object.getString(konfigurasi.TAG_JSON_ID_MAT);
@@ -214,7 +225,7 @@ public class LihatDetailMateri extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
     }

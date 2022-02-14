@@ -29,15 +29,16 @@
             android:exported="false"/>
         <activity android:name=".LihatDetailKelas"
             android:exported="false"/>
+       <activity android:name="LihatDetailDariDetailKelas"
+           android:exported="false"/>
         <activity android:name=".TambahDataMateriActivity"
             android:exported="false"/>
         <activity android:name=".TambahDataInstrukturActivity"
         android:exported="false"/>
         <activity android:name=".TambahDataPesertaActivity"
             android:exported="false"/>
-
-
-
+        <activity android:name=".TambahKelasActivity"
+            android:exported="false"/>
 
     </application>
 

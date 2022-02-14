@@ -32,6 +32,10 @@
             android:icon="@drawable/material"
             android:title="Data Detail Kelas"
             />
+        <item
+            android:id="@+id/nav_search3"
+            android:icon="@drawable/magnifier"
+            android:title="Search" />
 
     </group>
 </menu>

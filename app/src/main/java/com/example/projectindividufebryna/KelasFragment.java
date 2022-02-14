@@ -26,7 +26,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class KelasFragment  extends Fragment implements MainActivity.OnBackPressedListener, View.OnClickListener {
+public class KelasFragment extends Fragment implements MainActivity.OnBackPressedListener, View.OnClickListener {
     private FragmentKelasLayoutBinding kelasLayoutBinding;
     private View view;
     private String JSON_STRING;
@@ -64,7 +64,7 @@ public class KelasFragment  extends Fragment implements MainActivity.OnBackPress
         });
 
         // penanganan FAB
-        //pegawaiBinding.addFab.setOnClickListener(this);
+        kelasLayoutBinding.addFab.setOnClickListener(this);
 
         // ambil data dari JSON
         getJsonData();
@@ -75,7 +75,7 @@ public class KelasFragment  extends Fragment implements MainActivity.OnBackPress
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                loading = ProgressDialog.show(view.getContext(), "Load Data Kelas", "Harap menunggu...", false, false);
+                loading = ProgressDialog.show(view.getContext(), "Ambil Data Kelas", "Harap menunggu...", false, false);
             }
 
             @Override
@@ -94,14 +94,14 @@ public class KelasFragment  extends Fragment implements MainActivity.OnBackPress
                 // Toast.makeText(view.getContext(), JSON_STRING, Toast.LENGTH_LONG).show();
 
                 // menampilkan data json kedalam list view
-                displayAllDataPeserta();
+                displayAllDataKelas();
             }
         }
         GetJsonData getJsonData = new GetJsonData();
         getJsonData.execute();
     }
 
-    private void displayAllDataPeserta() {
+    private void displayAllDataKelas() {
         JSONObject jsonObject = null;
         ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
 

@@ -1,6 +1,7 @@
 package com.example.projectindividufebryna;
 
 import android.app.ProgressDialog;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,7 +21,9 @@ public class TambahDataInstrukturActivity extends AppCompatActivity implements V
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tambah_data_instruktur);
-
+//        getSupportActionBar().setTitle("Tambah Instruktur");
+   //     getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      //  getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.purple_500)));
         edit_nama_ins = findViewById(R.id.edit_nama_ins);
         edit_email_ins = findViewById(R.id.edit_email_ins);
         edit_hp_ins = findViewById(R.id.edit_hp_ins);

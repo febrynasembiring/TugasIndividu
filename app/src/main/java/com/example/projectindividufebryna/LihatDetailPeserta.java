@@ -1,5 +1,10 @@
 package com.example.projectindividufebryna;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,11 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -23,13 +23,19 @@ import java.util.HashMap;
 public class LihatDetailPeserta extends AppCompatActivity  {
     EditText edit_id_pst, edit_nama_pst, edit_email_pst, edit_hp_pst, edit_ins_pst;
     String id;
-    Button btn_update_peserta, btn_delete_peserta;
+    Button button_update_peserta;
+    Button button_delete_peserta;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_data_peserta);
 
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+       getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         edit_id_pst = findViewById(R.id.edit_id_pst);
         edit_nama_pst = findViewById(R.id.edit_nama_pst);
@@ -37,23 +43,22 @@ public class LihatDetailPeserta extends AppCompatActivity  {
         edit_hp_pst = findViewById(R.id.edit_hp_pst);
         edit_ins_pst = findViewById(R.id.edit_ins_pst);
 
-        btn_update_peserta = findViewById(R.id.btn_update_peserta);
-        btn_delete_peserta = findViewById(R.id.btn_delete_peserta);
         //menerima intent dari class
         Intent receiveIntent = getIntent();
         id = receiveIntent.getStringExtra(konfigurasi.PST_ID);
         edit_id_pst.setText(id);
 
         //button
+        button_update_peserta = findViewById(R.id.btn_update_peserta);
+        button_delete_peserta = findViewById(R.id.btn_delete_peserta);
 
-
-        btn_update_peserta.setOnClickListener(new View.OnClickListener() {
+        button_update_peserta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 updatePeserta();
             }
         });
-        btn_delete_peserta.setOnClickListener(new View.OnClickListener() {
+        button_delete_peserta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(LihatDetailPeserta.this);
@@ -107,6 +112,9 @@ public class LihatDetailPeserta extends AppCompatActivity  {
                 super.onPostExecute(message);
                 loading.dismiss();
                 displayDetailData(message);
+                Intent intent = new Intent(LihatDetailPeserta.this, MainActivity.class);
+                intent.putExtra("KeyName", "peserta");
+                startActivity(intent);
             }
         }
         DeletePeserta dp = new DeletePeserta();
@@ -169,7 +177,9 @@ public class LihatDetailPeserta extends AppCompatActivity  {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //startActivity(new Intent(LihatDetailInstruktur.this, InstrukturFragment.class));
+                        Intent intent = new Intent(LihatDetailPeserta.this, MainActivity.class);
+                        intent.putExtra("KeyName", "peserta");
+                        startActivity(intent);
                     }
                 });
 
@@ -210,7 +220,7 @@ public class LihatDetailPeserta extends AppCompatActivity  {
     private void displayDetailData(String json) {
         try {
             JSONObject jsonObject = new JSONObject(json);
-            JSONArray result = jsonObject.getJSONArray(konfigurasi.TAG_JSON_ARRAY_PST);
+            JSONArray result = jsonObject.getJSONArray(konfigurasi.TAG_JSON_ARRAY);
             JSONObject object = result.getJSONObject(0);
 
             String id_pst = object.getString(konfigurasi.TAG_JSON_ID_PST);
@@ -231,7 +241,7 @@ public class LihatDetailPeserta extends AppCompatActivity  {
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
     }

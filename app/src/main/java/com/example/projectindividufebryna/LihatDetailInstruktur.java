@@ -1,6 +1,8 @@
 package com.example.projectindividufebryna;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -12,7 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -25,60 +26,68 @@ public class LihatDetailInstruktur extends AppCompatActivity  {
     String id;
     Button button_update;
     Button button_delete;
+    private Toolbar toolbar;
 
-
-        protected void onCreate(Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_data_instruktur);
-            edit_id_ins = findViewById(R.id.edit_id_ins);
-            edit_nama_ins = findViewById(R.id.edit_nama_ins);
-            edit_email_ins = findViewById(R.id.edit_email_ins);
-            edit_hp_ins = findViewById(R.id.edit_hp_ins);
 
-            //menerima intent dari class
-            Intent receiveIntent = getIntent();
-            id = receiveIntent.getStringExtra(konfigurasi.INS_ID);
-            edit_id_ins.setText(id);
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-            //button
-            button_update = findViewById(R.id.btn_update_ins);
-            button_delete = findViewById(R.id.btn_delete_ins);
+        edit_id_ins = findViewById(R.id.edit_id_ins);
+        edit_nama_ins = findViewById(R.id.edit_nama_ins);
+        edit_email_ins = findViewById(R.id.edit_email_ins);
+        edit_hp_ins = findViewById(R.id.edit_hp_ins);
 
-            button_update.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    updateInstruktur();
-                }
-            });
-            button_delete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(LihatDetailInstruktur.this);
-                    alertDialogBuilder.setMessage("Yakin menghapus data ini?");
+        //menerima intent dari class
+        Intent receiveIntent = getIntent();
+        id = receiveIntent.getStringExtra(konfigurasi.INS_ID);
+        edit_id_ins.setText(id);
 
-                    alertDialogBuilder.setPositiveButton("Ya",
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    deleteInstruktur();
-                                }
-                            });
+        //button
+        button_update = findViewById(R.id.btn_update_ins);
+        button_delete = findViewById(R.id.btn_delete_ins);
 
-                    alertDialogBuilder.setNegativeButton("Tidak",
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                }
-                            });
+        button_update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateInstruktur();
+            }
+        });
 
-                    AlertDialog alertDialog = alertDialogBuilder.create();
-                    alertDialog.show();
-                }
-            });
+        button_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(LihatDetailInstruktur.this);
+                alertDialogBuilder.setMessage("Yakin Hapus Data ini?");
 
-            //mengambil data JSON
-            getJSON();
-        }
+                alertDialogBuilder.setPositiveButton("Ya",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                deleteInstruktur();
+                            }
+                        });
+
+                alertDialogBuilder.setNegativeButton("Tidak",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+            }
+        });
+
+        //mengambil data JSON
+        getJSON();
+    }
 
     private void deleteInstruktur() {
         class DeleteInstruktur extends AsyncTask<Void, Void, String> {
@@ -104,6 +113,9 @@ public class LihatDetailInstruktur extends AppCompatActivity  {
                 super.onPostExecute(message);
                 loading.dismiss();
                 displayDetailData(message);
+                Intent intent = new Intent(LihatDetailInstruktur.this, MainActivity.class);
+                intent.putExtra("KeyName", "instruktur");
+                startActivity(intent);
             }
         }
         DeleteInstruktur de = new DeleteInstruktur();
@@ -151,7 +163,7 @@ public class LihatDetailInstruktur extends AppCompatActivity  {
         ue.execute();
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(LihatDetailInstruktur.this);
-        alertDialogBuilder.setMessage("Ingin mengupdate data ini?");
+        alertDialogBuilder.setMessage("Update data ini?");
 
         alertDialogBuilder.setPositiveButton("Ya",
                 new DialogInterface.OnClickListener() {
@@ -164,7 +176,9 @@ public class LihatDetailInstruktur extends AppCompatActivity  {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //startActivity(new Intent(LihatDetailInstruktur.this, InstrukturFragment.class));
+                        Intent intent = new Intent(LihatDetailInstruktur.this, MainActivity.class);
+                        intent.putExtra("KeyName", "instruktur");
+                        startActivity(intent);
                     }
                 });
 
@@ -203,6 +217,7 @@ public class LihatDetailInstruktur extends AppCompatActivity  {
     }
 
     private void displayDetailData(String json) {
+
         try {
             JSONObject jsonObject = new JSONObject(json);
             JSONArray result = jsonObject.getJSONArray(konfigurasi.TAG_JSON_ARRAY_INS);
@@ -222,7 +237,7 @@ public class LihatDetailInstruktur extends AppCompatActivity  {
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
     }

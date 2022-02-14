@@ -60,7 +60,7 @@ public class konfigurasi {
     public static final String URL_UPDATE_INSTRUKTUR =
             "http://192.168.0.103/inixtraining/instruktur/tr_update_instruktur.php";
     public static final String URL_DELETE_INSTRUKTUR =
-            "http://192.168.0.103/inixtraining/instruktur/tr_delete_instruktur.php?id_ins";
+            "http://192.168.0.103/inixtraining/instruktur/tr_delete_instruktur.php?id_ins=";
 
     // key and value JSON yang muncul di browser
     public static final String KEY_INS_ID = "id_ins";
@@ -97,14 +97,11 @@ public class konfigurasi {
     public static final String KEY_INS_KLS= "id_ins";
     public static final String KEY_MAT_KLS= "id_mat";
 
-
-
-
     // flag JSON
     public static final String TAG_JSON_ARRAY_KLS = "result_kls";
     public static final String TAG_JSON_ID_KLS = "id_kls";
     public static final String TAG_JSON_TGL_MULAI_KLS = "tgl_mulai_kls";
-    public static final String TAG_JSON_TGL_AKHIR_KLS= "tgl_akhir_kelas";
+    public static final String TAG_JSON_TGL_AKHIR_KLS= "tgl_akhir_kls";
     public static final String TAG_JSON_INS_KLS_ID = "id_ins";
     public static final String TAG_JSON_MAT_KLS_ID= "id_mat";
 
@@ -115,27 +112,43 @@ public class konfigurasi {
 
     // untuk data detail kelas
     public static final String URL_GET_ALL_DETAIL = "http://192.168.0.103/inixtraining/detail_kelas/tr_datas_detail_kelas.php";
-    public static final String URL_GET_DETAIL_DETAIL = "http://192.168.0.103/inixtraining/detail_kelas/tr_detail_detail_kelas.php?id_pst=";
+    public static final String URL_GET_DETAIL_DETAIL = "http://192.168.0.103/inixtraining/detail_kelas/tr_detail_detail_kelas.php?id_detail_kls=";
     public static final String URL_ADD_DETAIL = "http://192.168.0.103/inixtraining/detail_kelas/tr_add_detail_kelas.php";
     public static final String URL_UPDATE_DETAIL = "http://192.168.0.103/inixtraining/detail_kelas/tr_update_detail_kelas.php";
-    public static final String URL_DELETE_DETAIL = "http://192.168.0.103/inixtraining/detail_kelas/tr_delete_detail_kelas.php?id_pst=";
+    public static final String URL_DELETE_DETAIL = "http://192.168.0.103/inixtraining/detail_kelas/tr_delete_detail_kelas.php?id_detail_kls=";
 
+  //  public static final String URL_GET_DETAIL_DETAIL_ID = "http://192.168.0.103/inixindo/detail_kelas/tr_detail_detail_kelas.php?id_detail_kls=";
     // key and value JSON yang muncul di browser
     public static final String KEY_DETAIL_ID = "id_detail_kls";
-    public static final String KEY_DETAIL_ID_KLS= "id_kls";
-    public static final String KEY_DETAIL_ID_PST= "id_pst";
+    public static final String KEY_DETAIL_NAMA_MATERI ="s.nama_mat";
+    public static final String KEY_DETAIL_ID_PST= "COUNT(cd.id_pst)";
 
 
     // flag JSON
     public static final String TAG_JSON_ARRAY_DTL = "result";
     public static final String TAG_JSON_DETAIL_ID_KLS = "id_detail_kls";
-    public static final String TAG_JSON_DETAIL_ID_PST= "id_kls";
-    public static final String TAG_DETAIL_ID_PST= "id_pst";
+    public static final String TAG_JSON_DETAIL_NAMA_MATERI= "nama_mat";
+    public static final String TAG_DETAIL_TGL_MULAI= "tgl_mulai_kls";
+    public static final String TAG_DETAIL_ID_KLS= "id_kls";
+    public static final String TAG_DETAIL_ID_PST= "COUNT(cd.id_pst)";
+    public static final String TAG_DETAIL_NAMA_INS= "nama_ins";
 
 
+    public static final String TAG_JSON_ARRAY = "result";
 
     // variabel ID Peserta
     public static final String DTL_ID = "id_detail_kls";
 
 
+    public static final String TAG_JSON_DETAIL_DARI_DETAIL_KLS_ID="id_kls";
+
+
+
+    public static final String ID_DETAIL_DR_DETAIL_KLS="id_kls";
+    public static final String TAG_JSON_ID_KELAS_UTK_DTL="id_kls";
+    public static final String TAG_JSON_DETAIL_DARI_DETAIL_ID_KELAS="id_detail_kls";
+    public static final String TAG_JSON_DETAIL_DARI_DETAIL_NAMA_PST="nama_pst";
+
+
+   // public static final String URL_GET_DETAIL_DETAIL_ID = "http://192.168.0.103/inixindo/detail_kelas/tr_detail_detail_kelas.php?id_detail_kls=";
 }

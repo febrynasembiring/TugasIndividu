@@ -14,7 +14,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:text="ID Materi"
+            android:text="ID Kelas"
             android:layout_weight="1"
             android:textSize="18sp"
             android:padding="8dp"/>

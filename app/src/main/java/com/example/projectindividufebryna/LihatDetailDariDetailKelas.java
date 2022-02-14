@@ -34,43 +34,43 @@ public class LihatDetailDariDetailKelas extends AppCompatActivity implements Ada
         //bikin tombol delete
 
         Intent receiveIntent = getIntent();
-        id_kls = receiveIntent.getStringExtra(konfigurasi.ID_DETAIL_DR_DETAIL_KLS);
+        id_kls = receiveIntent.getStringExtra(konfigurasi.DTL_ID);
 
         //method untuk ambil data JSON
         getJSON();
     }
 
-    private void deleteKelas() {
-        class DeleteKelas extends AsyncTask<Void, Void, String> {
-            ProgressDialog loading;
-
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-                loading = ProgressDialog.show(LihatDetailDariDetailKelas.this,
-                        "Deleting Data...", "Harap menunggu...",
-                        false, false);
-            }
-
-            @Override
-            protected String doInBackground(Void... params) {
-                HttpHandler handler = new HttpHandler();
-                String result = handler.sendGetResponse(konfigurasi.URL_DELETE_DETAIL_DARI_DETAIL_KLS, id_kls);
-                return result;
-            }
-
-            @Override
-            protected void onPostExecute(String message) {
-                super.onPostExecute(message);
-                loading.dismiss();
-                Intent intent = new Intent(LihatDetailDariDetailKelas.this, MainActivity.class);
-                intent.putExtra("KeyName", "detail kelas");
-                startActivity(intent);
-            }
-        }
-        DeleteKelas dk = new DeleteKelas();
-        dk.execute();
-    }
+//    private void deleteKelas() {
+//        class DeleteKelas extends AsyncTask<Void, Void, String> {
+//            ProgressDialog loading;
+//
+//            @Override
+//            protected void onPreExecute() {
+//                super.onPreExecute();
+//                loading = ProgressDialog.show(LihatDetailDariDetailKelas.this,
+//                        "Deleting Data...", "Harap menunggu...",
+//                        false, false);
+//            }
+//
+//            @Override
+//            protected String doInBackground(Void... params) {
+//                HttpHandler handler = new HttpHandler();
+//                String result = handler.sendGetResponse(konfigurasi.URL_DELETE_DETAIL_DARI_DETAIL_KLS, id_kls);
+//                return result;
+//            }
+//
+//            @Override
+//            protected void onPostExecute(String message) {
+//                super.onPostExecute(message);
+//                loading.dismiss();
+//                Intent intent = new Intent(LihatDetailDariDetailKelas.this, MainActivity.class);
+//                intent.putExtra("KeyName", "detail kelas");
+//                startActivity(intent);
+//            }
+//        }
+//        DeleteKelas dk = new DeleteKelas();
+//        dk.execute();
+//    }
 
     private void getJSON() {
 
@@ -88,7 +88,7 @@ public class LihatDetailDariDetailKelas extends AppCompatActivity implements Ada
             @Override
             protected String doInBackground(Void... voids) {
                 HttpHandler handler = new HttpHandler();
-                String result = handler.sendGetResponse(konfigurasi.URL_GET_DETAIL_DT_KLS, id_kls);
+                String result = handler.sendGetResponse(konfigurasi.URL_GET_DETAIL_DETAIL, id_kls);
                 return result;
             }
 
@@ -97,7 +97,7 @@ public class LihatDetailDariDetailKelas extends AppCompatActivity implements Ada
                 super.onPostExecute(message);
                 loading.dismiss();
                 JSON_STRING = message;
-                Log.d("DATA_JSON", JSON_STRING);
+                Log.d("DATA_JSON", message);
 
                 //fungsi nampilin lv data
                 displayAllData();
@@ -128,7 +128,7 @@ public class LihatDetailDariDetailKelas extends AppCompatActivity implements Ada
                 detaildaridetailkelas.put(konfigurasi.TAG_JSON_DETAIL_DARI_DETAIL_NAMA_PST, list_nama_pst);
 
 //                ini biar ubah data jsn ke arrar
-                list.add(detaildetailkelas);
+                list.add(detaildaridetailkelas);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
